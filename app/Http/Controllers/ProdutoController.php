@@ -21,7 +21,7 @@ class ProdutoController extends Controller
         $produtos = Produto::latest()->paginate(5);
 
         return view('produtos.index', compact('produtos'))
-        ->with('i', (request()->input('page',1)-1)*5)
+        ->with('i', (request()->input('page',1)-1)*5);
     }
 
     /**
@@ -49,7 +49,7 @@ class ProdutoController extends Controller
 
         Produto::create($request->all());
 
-        return redirect()-> route('produtos.index');
+        return redirect()-> route('produtos.index')
                         ->with('sucesso', 'produto criado com sucesso.');
     }
 
